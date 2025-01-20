@@ -1,0 +1,26 @@
+@rooturl = http://localhost:9000/api/v1
+@userEP = {{rooturl}}/users
+
+
+POST {{userEP}}/register
+Content-Type: application/json
+
+{
+    "username" : "RAm",
+    "email" : "qwe@gmail.com",
+    "password" : "password"
+}
+
+###
+POST {{userEP}}/login
+Content-Type: application/json
+
+{
+    "email": "jane@gmail.com",
+    "password" : "paessword"
+
+}
+
+###
+
+GET "http://localhost:9000/"
