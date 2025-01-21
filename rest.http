@@ -1,7 +1,11 @@
 @rooturl = http://localhost:9000/api/v1
 @userEP = {{rooturl}}/users
 
+@transactionEP = {{rooturl}}/transactions
 
+
+
+# registering new user 
 POST {{userEP}}/register
 Content-Type: application/json
 
@@ -12,15 +16,34 @@ Content-Type: application/json
 }
 
 ###
+# log in 
 POST {{userEP}}/login
 Content-Type: application/json
 
 {
-    "email": "jane@gmail.com",
-    "password" : "paessword"
+     "email" : "qwe@gmail.com",
+    "password" : "password"
 
 }
 
 ###
+# creating the transactions
+POST {{transactionEP}}/add
+Content-Type: application/json
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InF3ZUBnbWFpbC5jb20iLCJpYXQiOjE3Mzc0MjA3OTEsImV4cCI6MTczNzUwNzE5MX0.cRVjCjBmfQjsUyMnCw0wI3PpVnSGY-VtXSokxktDa6Y
 
-GET "http://localhost:9000/"
+{
+    "type": "Income",
+    "amount": 100,
+    "date": "01-21-2025",
+    "description" : "STOCKS"
+}
+
+###
+GET {{transactionEP}}
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InF3ZUBnbWFpbC5jb20iLCJpYXQiOjE3Mzc0MjA3OTEsImV4cCI6MTczNzUwNzE5MX0.cRVjCjBmfQjsUyMnCw0wI3PpVnSGY-VtXSokxktDa6Y
+
+###
+
+DELETE {{transactionEP}}/delete/678ee6c24385e40dadf24940
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InF3ZUBnbWFpbC5jb20iLCJpYXQiOjE3Mzc0MjA3OTEsImV4cCI6MTczNzUwNzE5MX0.cRVjCjBmfQjsUyMnCw0wI3PpVnSGY-VtXSokxktDa6Y
