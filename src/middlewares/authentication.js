@@ -1,12 +1,13 @@
-import jwt from "jsonwebtoken"
+
 import { getUserByEmail } from "../Model/user/UserModel.js"
+import { verifyJwt } from "../utils/jwt.js"
 
 export const authenticate = async (req, res, next) => {
     // 1. get the token
     const token = req.headers.authorization
 
     // 2. verify the token
-    const decodedData = await jwt.verify(token, process.env.JWT_SECRET)
+    const decodedData = await verifyJwt(token)
     if (decodedData?.email) {
         // 3. find the user from the decoded data 
         const userData = await getUserByEmail(decodedData.email)
@@ -29,15 +30,4 @@ export const authenticate = async (req, res, next) => {
         })
     }
 
-    // if(){
-
-    //     next()
-    // }else{
-    //    { const errorObj = {
-    //         status : "error",
-    //         message: "Authentication Failed!"
-    //     }
-    // return req.status
-    // }
-    // }
 }

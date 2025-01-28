@@ -10,8 +10,8 @@ POST {{userEP}}/register
 Content-Type: application/json
 
 {
-    "username" : "RAm",
-    "email" : "qwe@gmail.com",
+    "username" : "RAms",
+    "email" : "qwes@gmail.com",
     "password" : "password"
 }
 
@@ -63,4 +63,18 @@ Content-Type: application/json
         "679811ecc8560152e7b86a8b",
         "679811edc8560152e7b86a8e"
     ]
+}
+
+
+###
+
+PUT {{transactionEP}}/update/679821b1c6cb7b470cfd8b84
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InF3ZUBnbWFpbC5jb20iLCJpYXQiOjE3MzgwMTg1MjAsImV4cCI6MTczODEwNDkyMH0.G-6Ay4wK2Ho0Ob0EzpqYl90qTs4V9Mr6SYyuwRvFgP8
+
+
+{
+    "amount" : 500,
+    "description" : "sjkdfkashdglk",
+    "type": "Expense"
 }

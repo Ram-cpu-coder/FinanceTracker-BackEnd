@@ -16,3 +16,6 @@ export const delManyTransaction = (tObj) => {
 export const createTransaction = (tObj) => {
     return transactionModel(tObj).save();
 }
+export const updateFinance = (filter, updatedObj) => {
+    return transactionModel.findByIdAndUpdate(filter, updatedObj)
+}

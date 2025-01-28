@@ -1,6 +1,6 @@
 
 import { authenticate } from "../middlewares/authentication.js"
-import { addTransaction, getTransaction, deleteTransaction, deleteMultiple } from "../controllers/transactionController.js"
+import { addTransaction, getTransaction, deleteTransaction, deleteMultiple, updateTransaction } from "../controllers/transactionController.js"
 
 import express from "express"
 
@@ -16,5 +16,8 @@ router.route("/delete/:Tid").delete(authenticate, deleteTransaction)
 
 //deleting multiple transactions
 router.route("/").delete(authenticate, deleteMultiple)
+
+//updating the transaction
+router.route("/update/:id").put(authenticate, updateTransaction);
 
 export default router

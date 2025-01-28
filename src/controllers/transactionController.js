@@ -1,5 +1,5 @@
 
-import { findOneTransaction, findTransaction, findOneAndDeleteTransaction, delManyTransaction, createTransaction } from "../Model/transaction/TransactionModel.js";
+import { findOneTransaction, findTransaction, findOneAndDeleteTransaction, delManyTransaction, createTransaction, updateFinance } from "../Model/transaction/TransactionModel.js";
 
 export const addTransaction = async (req, res) => {
     try {
@@ -97,6 +97,37 @@ export const deleteMultiple = async (req, res) => {
                 message: "couldnot find the transactions"
             })
         }
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            status: "error",
+            message: "didnot find the transaction"
+        })
+    }
+}
+
+export const updateTransaction = async (req, res) => {
+    try {
+        const obj = req.body
+        const id = req.params.id;
+
+        const updatedObj = await updateFinance(
+            { _id: id, userID: req.userData._id },
+            obj, {
+            new: true
+        })
+        if (!updatedObj) {
+            res.status(404).json({
+                status: 'error',
+                message: "couldnot find the transaction."
+            })
+        }
+        res.status(201).json({
+            status: "success",
+            message: "updated successfully",
+            updatedObj
+        })
 
     } catch (error) {
         console.log(error)

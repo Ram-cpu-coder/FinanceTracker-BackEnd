@@ -1,15 +1,15 @@
-import bcrypt from "bcrypt"
-import jwt from "jsonwebtoken"
 import { createUser, getAllUser, getUserByEmail } from "../Model/user/UserModel.js"
+import { jwtSign } from "../utils/jwt.js"
 
-export const register = async (req, res) => {
+import { hashPw, comparePw } from "../utils/bcrypt.js";
+
+export const register = async (req, res, next) => {
     try {
 
         const { username, email } = req.body
 
         let { password } = req.body
-        const saltRound = 10
-        password = await bcrypt.hash(password, saltRound)
+        password = await hashPw(password)
 
         const data = await createUser(
             {
@@ -19,21 +19,21 @@ export const register = async (req, res) => {
             }
         )
 
-        res.send({
-            status: "success",
+        next({
+            statusCode: 201,
             message: "User Created",
-            data,
+            type: 'severe'
         })
     }
     catch (error) {
-        console.log(error.message)
         if (error?.message?.includes("E11000")) {
-            res.status(400).json({
-                status: "error",
-                message: "Duplicate User"
+            next({
+                statusCode: 400,
+                message: "DUPLICAsdlfgjklsdjgljfdTE USER"
             })
+
         } else {
-            res.status(500).json({
+            next({
                 status: "error",
                 message: "Error creating user"
             })
@@ -49,13 +49,11 @@ export const login = async (req, res) => {
         const userData = await getUserByEmail(email);
 
         if (userData) {
-            const loginSuccess = await bcrypt.compare(password, userData.password)
+            const loginSuccess = await comparePw(password, userData.password)
             const tokenData = {
                 email: userData.email,
             }
-            const token = await jwt.sign(tokenData, process.env.JWT_SECRET, {
-                expiresIn: process.env.JWT_EXPIRES_IN,
-            })
+            const token = await jwtSign(tokenData)
             if (loginSuccess) {
                 res.status(200).json({
                     status: "success",
@@ -76,6 +74,7 @@ export const login = async (req, res) => {
             })
         }
     } catch (error) {
+        console.log(error)
         res.status(500).json({
             status: "error",
             message: "Log in error"
