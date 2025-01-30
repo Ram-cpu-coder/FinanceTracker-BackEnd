@@ -10,8 +10,8 @@ POST {{userEP}}/register
 Content-Type: application/json
 
 {
-    "username" : "RAms",
-    "email" : "qwes@gmail.com",
+    "username" : "RAmssss",
+    "email" : "qwesssss@gmail.com",
     "password" : "password"
 }
 
