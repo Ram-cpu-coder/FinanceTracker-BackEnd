@@ -1,5 +1,6 @@
 import express from "express"
 import cors from "cors"
+import dotenv from "dotenv"
 
 import { connectMongoDB } from "./src/config/mongodbConfig.js"
 import userRouter from "./src/routers/userRoutes.js";
@@ -14,6 +15,8 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 app.use(express.json())
 app.use(cors())
+
+dotenv.config()
 
 // user routing
 app.use("/api/v1/users", userRouter)

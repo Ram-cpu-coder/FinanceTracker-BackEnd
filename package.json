@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon --env-file=.env script.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node --env-file=.env script.js"
+    "start": "node script.js"
   },
   "author": "",
   "license": "ISC",
