@@ -7,6 +7,7 @@ import userRouter from "./src/routers/userRoutes.js";
 import transactionRouter from "./src/routers/transactionRoutes.js"
 import { errorHandler } from "./src/middlewares/errorHandler.js";
 
+dotenv.config();
 
 //connection to the mongo database
 connectMongoDB()
@@ -16,7 +17,6 @@ const app = express();
 app.use(express.json())
 app.use(cors())
 
-dotenv.config()
 
 // user routing
 app.use("/api/v1/users", userRouter)
