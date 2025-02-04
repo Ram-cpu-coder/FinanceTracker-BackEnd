@@ -1,4 +1,4 @@
-import { createUser, getAllUser, getUserByEmail } from "../Model/user/UserModel.js"
+import { createUser, getUser, getUserByEmail } from "../Model/user/UserModel.js"
 import { jwtSign } from "../utils/jwt.js"
 
 import { hashPw, comparePw } from "../utils/bcrypt.js";
@@ -26,10 +26,11 @@ export const register = async (req, res, next) => {
         })
     }
     catch (error) {
+        console.log(error)
         if (error?.message?.includes("E11000")) {
             next({
                 statusCode: 400,
-                message: "DUPLICAsdlfgjklsdjgljfdTE USER"
+                message: "DUPLICATE USER"
             })
 
         } else {
@@ -59,6 +60,9 @@ export const login = async (req, res) => {
                     status: "success",
                     message: "Login Successful",
                     accessToken: token,
+                    user: {
+                        _id: userData._id
+                    }
                 })
             }
             else {
@@ -84,11 +88,14 @@ export const login = async (req, res) => {
 
 }
 
-export const users = async (req, res) => {
-    const users = await getAllUser()
-    res.send({
+
+
+export const user = async (req, res) => {
+    req.userData.password = "";
+
+    return res.send({
         status: "success",
         message: "users found",
-        users
+        user: req.userData
     })
 }

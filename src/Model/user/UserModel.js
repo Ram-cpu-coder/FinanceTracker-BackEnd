@@ -10,6 +10,6 @@ export const getUserByEmail = (email) => {
     return userModel.findOne({ email })
 }
 
-export const getAllUser = () => {
+export const getUser = () => {
     return userModel.find()
 }
