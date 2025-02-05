@@ -28,4 +28,13 @@ const transactionSchema = mongoose.Schema({
 
 },
     { timestamps: true })
+
+transactionSchema.pre("save", function (next) {
+    if (this.type === "Expense") {
+        this.amount = -this.amount;
+    } else if (this.type === "Income") {
+        this.amount = Math.abs(this.amount)
+    }
+    next()
+})
 export default mongoose.model("Transaction", transactionSchema)
