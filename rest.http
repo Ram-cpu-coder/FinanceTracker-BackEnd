@@ -1,4 +1,4 @@
-@rooturl = http://localhost:9000/api/v1
+@rooturl = https://financetracker-backend-w78e.onrender.com
 @userEP = {{rooturl}}/users
 
 @transactionEP = {{rooturl}}/transactions
@@ -34,7 +34,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhbUBnbWFpbC5j
 # creating the transactions
 POST {{transactionEP}}/add
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhbUBnbWFpbC5jb20iLCJpYXQiOjE3Mzg3OTcwNDgsImV4cCI6MTczODg4MzQ0OH0.IXcOa30h2DeMLfH0Uhd3Lq7NVMD1EuFIvAS1fNurNVc
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhbUBnbWFpbC5jb20iLCJpYXQiOjE3Mzg4ODIzNjMsImV4cCI6MTczODk2ODc2M30.e2Z3974m_Si8hlf-hLxu0_Kqmj9GgoVADC4lpqcMuJU
 
 {
     "type": "Expense",
