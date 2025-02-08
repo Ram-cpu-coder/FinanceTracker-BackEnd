@@ -1,4 +1,4 @@
-@rooturl = https://financetracker-backend-w78e.onrender.com
+@rooturl = https://financetracker-backend-w78e.onrender.com/api/v1
 @userEP = {{rooturl}}/users
 
 @transactionEP = {{rooturl}}/transactions

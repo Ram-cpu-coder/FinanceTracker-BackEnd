@@ -18,12 +18,15 @@ export const register = async (req, res, next) => {
                 password
             }
         )
-
-        next({
-            statusCode: 201,
-            message: "User Created",
-            type: 'severe'
-        })
+        data ?
+            next({
+                statusCode: 201,
+                message: "User Created",
+                data
+            }) : next({
+                statusCode: 404,
+                message: "Couldnot Register"
+            })
     }
     catch (error) {
         console.log(error)
