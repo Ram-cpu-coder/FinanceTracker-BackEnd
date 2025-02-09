@@ -1,21 +1,23 @@
 export const errorHandler = (error, req, res, next) => {
-    let statuscode = error?.statusCode || 500;
-    let message = error?.message || "internal error";
-    let type = "Normal";
+    if (!error.statusCode) {
+        error.statusCode = 500;
+        error.message = error.message || "internal error";
+    }
+    let type = error.type || "Normal";
 
-    if (message.includes("E11000")) {
-        statuscode = 400;
-        message = "DUPLICATE USER"
+    if (error.message.includes("E11000")) {
+        error.statusCode = 400;
+        error.message = "DUPLICATE USER"
     }
 
-    if (error?.type) {
-        type = error.type
-    }
 
-    return res.status(statuscode).json({
-        status: "error",
-        message: message,
-        type
-    })
+    if (error.statusCode >= 500) {
+        return res.status(error.statusCode).json({
+            status: "error",
+            message: error.message,
+            type
+        })
+    }
+    next()
 
 }

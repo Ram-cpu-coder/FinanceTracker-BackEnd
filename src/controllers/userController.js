@@ -3,9 +3,8 @@ import { jwtSign } from "../utils/jwt.js"
 
 import { hashPw, comparePw } from "../utils/bcrypt.js";
 
-export const register = async (req, res, next) => {
+export const register = async (req, res) => {
     try {
-
         const { username, email } = req.body
 
         let { password } = req.body
@@ -18,30 +17,34 @@ export const register = async (req, res, next) => {
                 password
             }
         )
-        data ?
-            next({
-                statusCode: 201,
+        if (data) {
+            return res.status(201).json({
+                status: "success",
                 message: "User Created",
                 data
-            }) : next({
-                statusCode: 404,
-                message: "Couldnot Register"
-            })
+            });
+        } else {
+            return res.status(400).json({
+                status: "error",
+                message: "Could not Register"
+            });
+        }
+
     }
     catch (error) {
-        console.log(error)
+        console.log(error);
         if (error?.message?.includes("E11000")) {
-            next({
-                statusCode: 400,
+            return res.status(400).json({
+                status: "error",
                 message: "DUPLICATE USER"
-            })
-
+            });
         } else {
-            next({
+            return res.status(500).json({
                 status: "error",
                 message: "Error creating user"
-            })
+            });
         }
+
     }
 }
 

@@ -81,28 +81,37 @@ export const deleteTransaction = async (req, res) => {
 export const deleteMultiple = async (req, res) => {
     try {
         const { transactionsID } = req.body;
+        console.log("Transaction IDs", transactionsID)
+        if (!transactionsID || transactionsID.length === 0) {
+            return res.status(400).json({
+                status: "error",
+                message: "No transactions provided"
+            })
+        }
         const deletedTransactions = await delManyTransaction({
             _id: { $in: transactionsID },
             userID: req.userData._id
         })
         console.log(200, deletedTransactions)
-        if (deletedTransactions) {
-            res.status(200).json({
-                status: "success",
-                messgae: deletedTransactions, deletedCount
-            })
-        } else {
-            res.status(401).json({
+        if (deletedTransactions.deletedCount === 0) {
+            return res.status(404).json({
                 status: "error",
-                message: "couldnot find the transactions"
+                message: "Transactions Not Found"
             })
         }
+
+        return res.status(200).json({
+            status: "success",
+            message: "Deleted successfully!",
+            deletedCount: deletedTransactions.deletedCount
+        })
+
 
     } catch (error) {
         console.log(error)
         res.status(500).json({
             status: "error",
-            message: "didnot find the transaction"
+            message: "Network Error"
         })
     }
 }

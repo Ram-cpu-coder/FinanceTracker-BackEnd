@@ -10,8 +10,8 @@ POST {{userEP}}/register
 Content-Type: application/json
 
 {
-    "username" : "RAmssss",
-    "email" : "qwesssss@gmail.com",
+    "username" : "asertkdhgfk",
+    "email" : "sr34dfg@gmail.com",
     "password" : "password"
 }
 
@@ -34,7 +34,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhbUBnbWFpbC5j
 # creating the transactions
 POST {{transactionEP}}/add
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhbUBnbWFpbC5jb20iLCJpYXQiOjE3Mzg4ODIzNjMsImV4cCI6MTczODk2ODc2M30.e2Z3974m_Si8hlf-hLxu0_Kqmj9GgoVADC4lpqcMuJU
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhbUBnbWFpbC5jb20iLCJpYXQiOjE3MzkwNTgzNTksImV4cCI6MTczOTE0NDc1OX0.AwKazNCZLV6m75_yRm2R0kMeEhYBb2i-YyYqLoSF5sc
 
 {
     "type": "Expense",
@@ -45,23 +45,23 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhbUBnbWFpbC5j
 
 ###
 GET {{transactionEP}}
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhbUBnbWFpbC5jb20iLCJpYXQiOjE3Mzg2NDA2NTAsImV4cCI6MTczODcyNzA1MH0.z5B6t7AmJvXPDgikNChJFiiX-7jG9kRPaHhKQ6zRafY
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhbUBnbWFpbC5jb20iLCJpYXQiOjE3MzkwNjA5OTQsImV4cCI6MTczOTE0NzM5NH0.M1FTLShoWBq-DdQfdH2B3Jq-n8XnVUvss3Fw0DAN0oQ
 
 
 ###
-DELETE {{transactionEP}}/delete/67982c814bbb1f21999916e4
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InF3ZUBnbWFpbC5jb20iLCJpYXQiOjE3MzgwMTg1MjAsImV4cCI6MTczODEwNDkyMH0.G-6Ay4wK2Ho0Ob0EzpqYl90qTs4V9Mr6SYyuwRvFgP8
+DELETE {{transactionEP}}/delete/67a7ece669e631a7e590fb05
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhbUBnbWFpbC5jb20iLCJpYXQiOjE3MzkwNjA5OTQsImV4cCI6MTczOTE0NzM5NH0.M1FTLShoWBq-DdQfdH2B3Jq-n8XnVUvss3Fw0DAN0oQ
 
 ###
 
 DELETE {{transactionEP}}
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InF3ZUBnbWFpbC5jb20iLCJpYXQiOjE3MzgwMTg1MjAsImV4cCI6MTczODEwNDkyMH0.G-6Ay4wK2Ho0Ob0EzpqYl90qTs4V9Mr6SYyuwRvFgP8
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhbUBnbWFpbC5jb20iLCJpYXQiOjE3MzkwNjA5OTQsImV4cCI6MTczOTE0NzM5NH0.M1FTLShoWBq-DdQfdH2B3Jq-n8XnVUvss3Fw0DAN0oQ
 Content-Type: application/json
 
 {
     "transactionsID":[
-        "679811ecc8560152e7b86a8b",
-        "679811edc8560152e7b86a8e"
+        "67a7ece769e631a7e590fb15",
+        "67a7ece769e631a7e590fb18"
     ]
 }
 
